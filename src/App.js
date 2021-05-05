@@ -33,8 +33,7 @@ class BooksApp extends React.Component {
             
           {/* -----> 2) View to search for books (URL path "/search") */}
           <Route exact path="/search" render={() => (
-            <SearchBooks />
-            
+            <SearchBooks />            
           )} />    
       </div>
     )
