@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import OneBook from './OneBook.js';
 
-// -----> Component starts here
+
 class MyBooks extends Component {
     state = {
 
@@ -62,11 +63,25 @@ class MyBooks extends Component {
         ];
 
         let myReads = [currentReading, wantRead, read];
+        // ---> !!! The above will changed to being dynamic 
+
 
         return (
             <div>
-                <h1>This is my bookshelf</h1>
-                <h1>{myReads[0][0].title}</h1>
+                <div className="bookshelf">
+                    <h2 className="bookshelf-title">Currently Reading</h2>
+                    <div className="bookshelf-books">
+                        <ol className="books-grid">
+                            <li>
+                                <OneBook
+                                    url={myReads[0][0].url}
+                                    title={myReads[0][0].title}
+                                    author={myReads[0][0].author}
+                                />
+                            </li>
+                        </ol>
+                    </div>
+                </div>
             </div>
         )
     }
