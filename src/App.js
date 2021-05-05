@@ -10,7 +10,7 @@ import SearchBooks from './SearchBooks.js';
 
 
 
-class BooksApp extends React.Component {
+class BooksApp extends Component {
   state = {
     allBooks: []
   }
@@ -28,6 +28,10 @@ class BooksApp extends React.Component {
                 <h1>MyReads</h1>
               </div>
               <MyBooks />
+              <div className="open-search">
+                    {/* <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button> */}
+                    <button>Add a book</button>
+              </div>
             </div>
           )} />
             
