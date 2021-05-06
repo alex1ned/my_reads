@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
-import OneBook from './OneBook.js';
+import OneBook from '../OneBook/OneBook.js';
+import './MyBooks.css';
 
 
 class MyBooks extends Component {
@@ -125,6 +126,11 @@ class MyBooks extends Component {
                                     url={myReads[2][1].url}
                                     title={myReads[2][1].title}
                                     author={myReads[2][1].author}
+                                />
+                                <OneBook
+                                    url={myReads[2][2].url}
+                                    title={myReads[2][2].title}
+                                    author={myReads[2][2].author}
                                 />
                             </li>
                         </ol>

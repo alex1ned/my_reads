@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
-// import * as BooksAPI from './BooksAPI';
+// import * as BooksAPI from './../..BooksAPI';
 import './App.css';
 
 // --- Import componentes
-import MyBooks from './MyBooks.js';
-import SearchBooks from './SearchBooks.js';
-
+import MyBooks from './../MyBooks/MyBooks.js';
+import SearchBooks from './../SearchBooks/SearchBooks.js';
+// import OneBook from './../OneBook/OneBook.js';
 
 
 class BooksApp extends Component {
@@ -34,7 +34,7 @@ class BooksApp extends Component {
               </div>
             </div>
           )} />
-            
+                       
           {/* -----> 2) View to search for books (URL path "/search") */}
           <Route exact path="/search" render={() => (
             <SearchBooks />            

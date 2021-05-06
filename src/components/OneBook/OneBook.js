@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './OneBook.css';
 
 
 const bookCoverImageStyle = {
