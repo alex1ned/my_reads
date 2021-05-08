@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // import * as BooksAPI from './../..BooksAPI';
 import './App.css';
 
@@ -27,10 +27,16 @@ class BooksApp extends Component {
               <div className="list-books-title">
                 <h1>MyReads</h1>
               </div>
-              <MyBooks />
+              <MyBooks 
+                allBooks={this.state.allBooks}
+              />
               <div className="open-search">
-                    {/* <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button> */}
-                    <button>Add a book</button>
+                    {/* <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button> */}         
+                    <Link 
+                        to='/search'
+                        className='search-books'>
+                          <button>Add book</button>
+                    </Link>
               </div>
             </div>
           )} />
