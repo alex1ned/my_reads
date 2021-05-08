@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './SearchBooks.css';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class SearchBooks extends Component {
     state = {
@@ -9,7 +9,24 @@ class SearchBooks extends Component {
 
     render() {
         return(
-            <h2>This is my search view</h2>
+            <div className="search-books">
+                <div className="search-books-bar">
+                    <Link
+                        className='close-search-books'
+                        to='/'    
+                    >
+                        <button className="close-search">Close</button>
+                    </Link>
+
+                    
+                    <div className="search-books-input-wrapper">
+                        <input type="text" placeholder="Search by title or author"/>
+                    </div>
+                </div>
+                <div className="search-books-results">
+                    <ol className="books-grid"></ol>
+                </div>
+            </div>
         )
     }
 };
