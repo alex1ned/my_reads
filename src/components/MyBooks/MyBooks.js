@@ -68,25 +68,21 @@ class MyBooks extends Component {
 
 
         return (
-            <div>
+            <div>                
                 {/* ---> Current Reading */}
                 <div className="bookshelf">
                     <h2 className="bookshelf-title">Currently Reading</h2>
                     <div className="bookshelf-books">
-                        <ol className="books-grid">
-                            <li>
-                                <OneBook
-                                    url={myReads[0][0].url}
-                                    title={myReads[0][0].title}
-                                    author={myReads[0][0].author}
-                                />
-                                <OneBook
-                                    url={myReads[0][1].url}
-                                    title={myReads[0][1].title}
-                                    author={myReads[0][1].author}
-                                />
-                            </li>
-                        </ol>
+                        <div className="books-grid">
+                            {
+                                currentReading.map(book => {
+                                    return <OneBook url={book.url}
+                                                    title={book.title}
+                                                    author={book.author}
+                                           />              
+                                })
+                            }
+                        </div>
                     </div>
                 </div>
 
@@ -94,20 +90,16 @@ class MyBooks extends Component {
                 <div className="bookshelf">
                     <h2 className="bookshelf-title">Want to Read</h2>
                     <div className="bookshelf-books">
-                        <ol className="books-grid">
-                            <li>
-                                <OneBook
-                                    url={myReads[1][0].url}
-                                    title={myReads[1][0].title}
-                                    author={myReads[1][0].author}
-                                />
-                                <OneBook
-                                    url={myReads[1][1].url}
-                                    title={myReads[1][1].title}
-                                    author={myReads[1][1].author}
-                                />
-                            </li>
-                        </ol>
+                        <div className="books-grid">
+                            {
+                                wantRead.map(book => {
+                                    return <OneBook url={book.url}
+                                                    title={book.title}
+                                                    author={book.author}
+                                           />              
+                                })
+                            }
+                        </div>
                     </div>
                 </div>
 
@@ -115,25 +107,16 @@ class MyBooks extends Component {
                 <div className="bookshelf">
                     <h2 className="bookshelf-title">Read</h2>
                     <div className="bookshelf-books">
-                        <ol className="books-grid">
-                            <li>
-                                <OneBook
-                                    url={myReads[2][0].url}
-                                    title={myReads[2][0].title}
-                                    author={myReads[2][0].author}
-                                />
-                                <OneBook
-                                    url={myReads[2][1].url}
-                                    title={myReads[2][1].title}
-                                    author={myReads[2][1].author}
-                                />
-                                <OneBook
-                                    url={myReads[2][2].url}
-                                    title={myReads[2][2].title}
-                                    author={myReads[2][2].author}
-                                />
-                            </li>
-                        </ol>
+                        <div className="books-grid">
+                            {
+                                read.map(book => {
+                                    return <OneBook url={book.url}
+                                                    title={book.title}
+                                                    author={book.author}
+                                           />              
+                                })
+                            }
+                        </div>
                     </div>
                 </div>
             {/* ---> End of wrapper */}
