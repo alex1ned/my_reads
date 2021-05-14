@@ -48,7 +48,7 @@ class BooksApp extends Component {
     else {
       BooksAPI.update(oneBook, event);
       
-      const allNewBooks = allBooks.map(aBook => {
+      let allNewBooks = allBooks.map(aBook => {
         if (aBook.id === oneBook.id) {
           aBook.shelf = event;
         }

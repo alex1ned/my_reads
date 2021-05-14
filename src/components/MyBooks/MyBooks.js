@@ -4,11 +4,7 @@ import OneBook from '../OneBook/OneBook.js';
 import './MyBooks.css';
 
 
-class MyBooks extends Component {
-    state = {
-
-    }
-    
+class MyBooks extends Component {    
     render() {
         const currentReading = this.props.allBooks.filter(oneBook => oneBook.shelf === "currentlyReading");
         const wantRead = this.props.allBooks.filter(oneBook => oneBook.shelf === "wantToRead");
