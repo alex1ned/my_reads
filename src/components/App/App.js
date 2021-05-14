@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-// import * as BooksAPI from './../..BooksAPI';
+import * as BooksAPI from './../../BooksAPI';
 import './App.css';
 
 // --- Import componentes
 import MyBooks from './../MyBooks/MyBooks.js';
 import SearchBooks from './../SearchBooks/SearchBooks.js';
-// import OneBook from './../OneBook/OneBook.js';
 
 
 class BooksApp extends Component {
@@ -15,11 +14,17 @@ class BooksApp extends Component {
     allBooks: []
   }
 
-  render() {
+  async componentDidMount(){
+    const allBooks = await BooksAPI.getAll();
+    this.setState({
+      allBooks: allBooks
+    })
+  }
+
+  render() {    
     return (
-      // Wrapper for enire app
       <div className="app">
-          {/* There are two views managed with React Router: the books and seaching for books */}
+          {/* 2 views managed with Router: the 'MyBooks' and 'SeachBooks' */}
           
           {/* -----> 1) View of all books in shelfs (default URL with path "/") */}
           <Route exact path="/" render={() => (
@@ -31,7 +36,6 @@ class BooksApp extends Component {
                 allBooks={this.state.allBooks}
               />
               <div className="open-search">
-                    {/* <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button> */}         
                     <Link 
                         to='/search'
                         className='search-books'>
@@ -46,6 +50,7 @@ class BooksApp extends Component {
           <Route exact path="/search" render={() => (
             <SearchBooks />            
           )} />    
+          
       </div>
     )
   }
