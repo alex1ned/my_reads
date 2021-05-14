@@ -17,11 +17,12 @@ class OneBook extends Component {
                         <img
                             className="book-cover"
                             style={bookCoverImageStyle}
-                            src={this.props.url}
+                            src={this.props.bookComponents.url}
                             alt='Book cover not found'
                         />
                         <div className="book-shelf-changer">
-                            <select>
+                            {/* This needs to change! */}
+                            <select onChange={event => this.props.updateBookShelf(this.props.bookComponents, event.target.value)} value={this.props.bookComponents.shelf}>
                                 <option value="move" disabled>Move to...</option>
                                 <option value="currentlyReading">Currently Reading</option>
                                 <option value="wantToRead">Want to Read</option>
@@ -30,8 +31,8 @@ class OneBook extends Component {
                             </select>
                         </div>
                     </div>
-                    <div className="book-title">{this.props.title}</div>
-                    <div className="book-authors">{this.props.author}</div>
+                    <div className="book-title">{this.props.bookComponents.title}</div>
+                    <div className="book-authors">{this.props.bookComponents.author}</div>
                 </div>
             </div>
         )

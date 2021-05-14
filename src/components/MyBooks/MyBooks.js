@@ -23,10 +23,15 @@ class MyBooks extends Component {
                         <div className="books-grid">
                             {
                                 currentReading.map(book => {
-                                    return <OneBook url={book.imageLinks.smallThumbnail}
-                                                    title={book.title}
-                                                    author={book.authors}
-                                                    id={book.id}
+                                    return <OneBook 
+                                                    bookComponents={{
+                                                        url: book.imageLinks.smallThumbnail,
+                                                        title: book.title,
+                                                        author: book.author,
+                                                        id: book.id,
+                                                        shelf: book.shelf
+                                                    }}
+                                                    updateBookShelf={this.props.updateBookShelf}
                                            />             
                                 })
                             }
@@ -42,10 +47,15 @@ class MyBooks extends Component {
                         <div className="books-grid">
                             {
                                 wantRead.map(book => {
-                                    return <OneBook url={book.imageLinks.smallThumbnail}
-                                                    title={book.title}
-                                                    author={book.authors}
-                                                    id={book.id}
+                                    return <OneBook 
+                                                    bookComponents={{
+                                                        url: book.imageLinks.smallThumbnail,
+                                                        title: book.title,
+                                                        author: book.author,
+                                                        id: book.id,
+                                                        shelf: book.shelf
+                                                    }}
+                                                    updateBookShelf={this.props.updateBookShelf}
                                             />             
                                 })
                             }
@@ -61,10 +71,15 @@ class MyBooks extends Component {
                         <div className="books-grid">
                             {
                                 read.map(book => {
-                                    return <OneBook url={book.imageLinks.smallThumbnail}
-                                                    title={book.title}
-                                                    author={book.authors}
-                                                    id={book.id}
+                                    return <OneBook 
+                                                    bookComponents={{
+                                                        url: book.imageLinks.smallThumbnail,
+                                                        title: book.title,
+                                                        author: book.author,
+                                                        id: book.id,
+                                                        shelf: book.shelf
+                                                    }}
+                                                    updateBookShelf={this.props.updateBookShelf}
                                             />          
                                 })
                             }

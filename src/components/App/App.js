@@ -10,9 +10,18 @@ import SearchBooks from './../SearchBooks/SearchBooks.js';
 
 
 class BooksApp extends Component {
-  state = {
-    allBooks: []
+  constructor(props)
+  {
+    super(props);
+    this.state = {
+      allBooks: []
+    };
+    this.updateBookShelf = this.updateBookShelf.bind(this);
   }
+  
+  // state = {
+  //   allBooks: []
+  // }
 
   async componentDidMount(){
     const allBooks = await BooksAPI.getAll();
@@ -20,6 +29,38 @@ class BooksApp extends Component {
       allBooks: allBooks
     })
   }
+
+  updateBookShelf = (oneBook, event) => {
+    oneBook.shelf = event;
+    const allBooks = this.state.allBooks;
+
+    // 1) If event in 'none' then exclude book from array and change state
+    if (oneBook.shelf === 'none') {
+      const allNewBooks = allBooks.filter(aBook => aBook.id !== oneBook.id);
+      
+      this.setState({
+        allBooks: allNewBooks
+      })
+    }
+
+    // 2) If event in is changed then change the 'shelf' property of the object
+    //    and change state
+    else {
+      BooksAPI.update(oneBook, event);
+      
+      const allNewBooks = allBooks.map(aBook => {
+        if (aBook.id === oneBook.id) {
+          aBook.shelf = event;
+        }
+        return allNewBooks;
+      });
+
+      this.setState({
+        allBooks: allNewBooks
+      })
+    }
+  };
+
 
   render() {    
     return (
@@ -34,6 +75,7 @@ class BooksApp extends Component {
               </div>
               <MyBooks 
                 allBooks={this.state.allBooks}
+                updateBookShelf={this.updateBookShelf}
               />
               <div className="open-search">
                     <Link 
@@ -50,7 +92,7 @@ class BooksApp extends Component {
           <Route exact path="/search" render={() => (
             <SearchBooks />            
           )} />    
-          
+
       </div>
     )
   }
