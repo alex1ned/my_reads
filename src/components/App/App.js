@@ -61,6 +61,18 @@ class BooksApp extends Component {
     }
   };
 
+  searchForBooks = (aBook, event) => {
+    aBook.shelf = event;
+    // const allBooks = this.state.allBooks;
+
+    let allNewBooks = [];
+    BooksAPI.update(aBook, event);
+    allNewBooks.push(aBook);
+
+    this.setState({
+      allBooks: allNewBooks
+    })
+  };
 
   render() {    
     return (
@@ -90,7 +102,11 @@ class BooksApp extends Component {
                        
           {/* -----> 2) View to search for books (URL path "/search") */}
           <Route exact path="/search" render={() => (
-            <SearchBooks />            
+            <SearchBooks
+              allBooks={this.state.allBooks}
+              updateBookShelf={this.updeateBookShelf}
+              searchForBooks={this.searchForBooks}
+            />            
           )} />    
 
       </div>

@@ -44,3 +44,13 @@ button:active {
 .search-books-results {
   padding: 80px 10px 20px;
 }
+
+.books-grid {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0;
+  width: 90%;
+  flex-wrap: wrap;
+}
