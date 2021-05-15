@@ -52,7 +52,7 @@ class BooksApp extends Component {
         if (aBook.id === oneBook.id) {
           aBook.shelf = event;
         }
-        return allNewBooks;
+        return aBook;
       });
 
       this.setState({
