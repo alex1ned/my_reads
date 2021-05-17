@@ -63,14 +63,14 @@ class BooksApp extends Component {
 
   searchForBooks = (aBook, event) => {
     aBook.shelf = event;
-    // const allBooks = this.state.allBooks;
+    let allCurrentBooks = this.state.allBooks;
 
     let allNewBooks = [];
     BooksAPI.update(aBook, event);
     allNewBooks.push(aBook);
 
     this.setState({
-      allBooks: allNewBooks
+      allBooks: allCurrentBooks.concat(...allNewBooks)
     })
   };
 

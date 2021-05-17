@@ -8,16 +8,6 @@ class SearchBooks extends Component {
     state = {
         searchTerm: "",
         potentialNewBooks: [],
-
-        // potentialNewBooks: [
-        //     {
-        //         title: "Harry Potter and the penis",
-        //         author: "JK Rowling",
-        //         url: "http://books.google.com/books/content?id=uu1mC6zWNTwC&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE73pGHfBNSsJG9Y8kRBpmLUft9O4BfItHioHolWNKOdLavw-SLcXADy3CPAfJ0_qMb18RmCa7Ds1cTdpM3dxAGJs8zfCfm8c6ggBIjzKT7XR5FIB53HHOhnsT7a0Cc-PpneWq9zX&source=gbs_api",
-        //         shelf: 'none',
-        //         id: 'xxkwma'
-        //     }
-        // ]
     }
 
     searchForNewBooks = (searchTerm) => {
@@ -34,11 +24,15 @@ class SearchBooks extends Component {
                     searchTerm === undefined ||
                     searchTerm === null ||
                     searchTerm.error) {
-                    return {potentialNewBooks: []}
+                    return {
+                        potentialNewBooks: []
+                    }
                 }
 
                 else if (searchTerm.length >= 1) {
-                    return {potentialNewBooks: newBooks}
+                    return {
+                        potentialNewBooks: newBooks
+                    }
                 }
 
 
@@ -58,7 +52,6 @@ class SearchBooks extends Component {
                     </Link>
                     
                     <div className="search-books-input-wrapper">
-                        {/* !!!! also needs the searchquery term and an on querychange */}
                         <input type="text"
                                placeholder="Search by title or author"
                                value={this.state.searchTerm}
@@ -67,13 +60,16 @@ class SearchBooks extends Component {
                     </div>
                 </div>
 
-                {/* !! Work here */}
                 <div className="search-books-results">
                     <div className="books-grid">
                         {
                             this.state.potentialNewBooks.map(book => {
+                                let bookURL = 'No book cover found :('
+                                if(book.imageLinks !== undefined) {
+                                    bookURL = book.imageLinks.smallThumbnail
+                                }
                                 return <OneBook bookComponents={{
-                                                    url: book.imageLinks.smallThumbnail,
+                                                    url: bookURL,
                                                     title: book.title,
                                                     author: book.author,
                                                     id: book.id,
