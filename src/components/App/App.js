@@ -19,10 +19,6 @@ class BooksApp extends Component {
     this.updateBookShelf = this.updateBookShelf.bind(this);
   }
   
-  // state = {
-  //   allBooks: []
-  // }
-
   async componentDidMount(){
     const allBooks = await BooksAPI.getAll();
     this.setState({
@@ -32,22 +28,20 @@ class BooksApp extends Component {
 
   updateBookShelf = (oneBook, event) => {
     oneBook.shelf = event;
-    const allBooks = this.state.allBooks;
+    const { allBooks } = this.state;
 
     // 1) If event in 'none' then exclude book from array and change state
     if (oneBook.shelf === 'none') {
-      const allNewBooks = allBooks.filter(aBook => aBook.id !== oneBook.id);
-      
+      const allNewBooks = allBooks.filter(aBook => 
+        aBook.id !== oneBook.id
+      );
       this.setState({
         allBooks: allNewBooks
       })
     }
 
-    // 2) If event in is changed then change the 'shelf' property of the object
-    //    and change state
+    // 2) If event in is changed then change the 'shelf' property of the object and change state
     else {
-      BooksAPI.update(oneBook, event);
-      
       let allNewBooks = allBooks.map(aBook => {
         if (aBook.id === oneBook.id) {
           aBook.shelf = event;
@@ -59,19 +53,23 @@ class BooksApp extends Component {
         allBooks: allNewBooks
       })
     }
+
+    // Update backend in either case
+    BooksAPI.update(oneBook, event);
   };
 
+  
   searchForBooks = (aBook, event) => {
     aBook.shelf = event;
-    let allCurrentBooks = this.state.allBooks;
+    let { allCurrentBooks } = this.state;
 
     let allNewBooks = [];
-    BooksAPI.update(aBook, event);
     allNewBooks.push(aBook);
-
+    
     this.setState({
       allBooks: allCurrentBooks.concat(...allNewBooks)
-    })
+    });
+    BooksAPI.update(aBook, event);
   };
 
   render() {    
@@ -104,7 +102,7 @@ class BooksApp extends Component {
           <Route exact path="/search" render={() => (
             <SearchBooks
               allBooks={this.state.allBooks}
-              updateBookShelf={this.updeateBookShelf}
+              updateBookShelf={this.updateBookShelf}
               searchForBooks={this.searchForBooks}
             />            
           )} />    

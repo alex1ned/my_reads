@@ -34,8 +34,6 @@ class SearchBooks extends Component {
                         potentialNewBooks: newBooks
                     }
                 }
-
-
             })
         ))
     };
