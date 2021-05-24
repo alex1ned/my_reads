@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './SearchBooks.css';
-import OneBook from '../OneBook/OneBook.js';
+import OneBook from './../OneBook/OneBook.js';
 import * as BooksAPI from './../../BooksAPI';
 import { Link } from 'react-router-dom';
 
@@ -18,7 +18,6 @@ class SearchBooks extends Component {
         BooksAPI.search(searchTerm)
         .then(newBooks =>(
             this.setState(currentState => {
-                // const allNewBooks = newBooks;
                 if (newBooks === undefined ||
                     newBooks.error ||
                     searchTerm === undefined ||

@@ -38,10 +38,12 @@ class BooksApp extends Component {
       this.setState({
         allBooks: allNewBooks
       })
+      BooksAPI.update(oneBook, event);
     }
 
     // 2) If event in is changed then change the 'shelf' property of the object and change state
     else {
+      BooksAPI.update(oneBook, event);
       let allNewBooks = allBooks.map(aBook => {
         if (aBook.id === oneBook.id) {
           aBook.shelf = event;
@@ -55,10 +57,10 @@ class BooksApp extends Component {
     }
 
     // Update backend in either case
-    BooksAPI.update(oneBook, event);
+    // BooksAPI.update(oneBook, event);
   };
 
-  
+
   searchForBooks = (aBook, event) => {
     aBook.shelf = event;
     let { allCurrentBooks } = this.state;
